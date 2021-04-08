@@ -1,15 +1,24 @@
+import parameters as user_pref
 import pandas as pd
 import numpy as np 
-from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
-# from selenium.webdriver.chrome.options import Options
-# from selenium.webdriver.edge.options import Options
 import time
+from selenium import webdriver
+
+if user_pref.WB == "firefox":
+	from selenium.webdriver.firefox.options import Options
+elif user_pref.WB == "chrome":
+	from selenium.webdriver.chrome.options import Options
+else:
+	from selenium.webdriver.edge.options import Options
+
+
 
 #-------ARGS-----------------------------------#
 URL = 'https://twitter.com/hashtag/generation2021?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Ehashtag'
 exec_path = "../bin/geckodriver" # charger le driver pour chrome ou edge
 #----------------------------------------------#
+
+
 def get_driver():
 #-------OPTIONS--------------------------------#
 	options = Options()
